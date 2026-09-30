@@ -1,0 +1,13 @@
+patient_id,label,tensor_paths,kfold0,kfold1,kfold2,kfold3,kfold4
+example_classA_0,classA,/path/to/features/example_classA_0.h5,val,val,val,val,val
+example_classA_1,classA,/path/to/features/example_classA_1.h5,test,test,test,test,test
+example_classA_2,classA,/path/to/features/example_classA_2.h5,train,train,train,train,train
+example_classA_3,classA,/path/to/features/example_classA_3.h5,train,train,train,train,train
+example_classB_0,classB,/path/to/features/example_classB_0.h5,val,val,val,val,val
+example_classB_1,classB,/path/to/features/example_classB_1.h5,test,test,test,test,test
+example_classB_2,classB,/path/to/features/example_classB_2.h5,train,train,train,train,train
+example_classB_3,classB,/path/to/features/example_classB_3.h5,train,train,train,train,train
+example_healthy_0,healthy,/path/to/features/example_healthy_0.h5,val,val,val,val,val
+example_healthy_1,healthy,/path/to/features/example_healthy_1.h5,test,test,test,test,test
+example_healthy_2,healthy,/path/to/features/example_healthy_2.h5,train,train,train,train,train
+example_healthy_3,healthy,/path/to/features/example_healthy_3.h5,train,train,train,train,train

@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "RECIPE: Re-mixing Embeddings via Clustering for Patient augmEntation"
+abstract: >-
+  Reference implementation of RECIPE, a statistically grounded patient-level
+  augmentation method for multiple instance learning that generates artificial
+  patients by re-mixing instance embeddings according to class-specific
+  cluster-composition recipes.
+authors:
+  - family-names: Dasdelen
+    given-names: Muhammed Furkan
+  - family-names: Ozlugedik
+    given-names: Fatih
+  - family-names: Litinetskaya
+    given-names: Anastasia
+  - family-names: Navab
+    given-names: Nassir
+  - family-names: Marr
+    given-names: Carsten
+  - family-names: Sadafi
+    given-names: Ario
+license: MIT
+repository-code: "https://github.com/marrlab/RECIPE"
+preferred-citation:
+  type: article
+  title: >-
+    Re-mixing Embeddings for Patient Augmentation in Data Scarce Multiple
+    Instance Learning
+  year: 2026
+  journal: arXiv
+  url: "https://arxiv.org/abs/2606.25770"
+  authors:
+    - family-names: Dasdelen
+      given-names: Muhammed Furkan
+    - family-names: Ozlugedik
+      given-names: Fatih
+    - family-names: Litinetskaya
+      given-names: Anastasia
+    - family-names: Navab
+      given-names: Nassir
+    - family-names: Marr
+      given-names: Carsten
+    - family-names: Sadafi
+      given-names: Ario

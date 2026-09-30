@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# run outputs
+_runs/
+logs_*/
+*.h5
+*.pt
+*.pkl
+*.npy
+*.pth
+
+# user-generated split CSVs carry patient ids (see datasets/README.md)
+datasets/*_splits.csv
+!datasets/example_splits.csv
+
+# emitted training arrays
+scripts/_train_*.sh
+
+# local experiment scratch
+_scratch/

@@ -1,0 +1,20 @@
+# Minimal modern stack for the `recipie` environment.
+# Covers both the htr module and ml_pipeline/train_5fold.py (MIL training on
+# pre-extracted features). Feature extraction (transformers/timm/torchvision/
+# dinov2/conch) is intentionally excluded.
+#
+# torch is pinned to a CUDA 12.4 build: the cluster GPU nodes (Tesla V100,
+# driver 575 / CUDA 12.9) reject torch's default CUDA 13 wheels. cu124 works with
+# any driver >= CUDA 12.4. Install with the PyTorch index, e.g.:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu124
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0+cu124
+numpy
+pandas
+h5py
+scikit-learn
+einops
+matplotlib
+seaborn
+tqdm
+pyyaml

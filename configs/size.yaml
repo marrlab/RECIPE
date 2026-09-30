@@ -1,0 +1,45 @@
+# Scenario 2 -- size / few-shot. Keep only k real patients of one class and fill
+# the class back to full size with artificial patients drawn from those k.
+#
+# EXAMPLE CONFIG. Single-cohort scenario: labels are used as-is (empty aliases),
+# so the few-shot class is named by its raw label. Change `splits_csv`,
+# `transfer_label` and the k sweep for your own cohort.
+#
+# The split CSV is NOT shipped (it carries patient ids). Generate it first:
+#   python scripts/build_splits.py --folds-dir ... --feature-dir ... --out ...
+# See datasets/README.md for the schema.
+scenario: size
+transfer_label: SCD               # the few-shot class to thin out and refill
+
+data:
+  name: aml_hehr
+  splits_csv: datasets/aml_hehr_splits.csv
+  file_extension: h5
+  aliases: {}
+
+size:
+  k_stats_values: [1, 2, 4, 8, 16, 32]
+
+clustering:
+  n_clusters: 50
+  algorithm: gaussian_mixture
+  covariance_type: diag
+  init_params: kmeans
+  random_state: 42
+
+generator:
+  n_artificial: 50                # ignored: size derives the count as (total - k)
+  seed: 42
+
+protocol:
+  seed: 42
+  n_folds: 5
+  k_value: 50
+  injection_base_fold: 0
+
+train:
+  architectures: [Transformer, ABMIL, Mean]
+  lr: 5.0e-5
+  epochs: 150
+  seed: 38
+  folds: [0, 1, 2, 3, 4]

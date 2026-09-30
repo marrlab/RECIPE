@@ -1,0 +1,50 @@
+# Scenario 1 -- transfer. Supply a target's missing control class by transferring
+# a source cohort's healthy cluster-composition signature onto target donor cells.
+#
+# EXAMPLE CONFIG. The values below describe one source/target pairing; nothing
+# here is hard-coded in the code. To use your own cohorts, change the two
+# splits_csv paths, the names, the aliases and `transfer_label`.
+# The split CSVs are NOT shipped (they carry patient ids). Generate them first:
+#   python scripts/build_splits.py --folds-dir ... --feature-dir ... --out ...
+# See datasets/README.md for the schema.
+scenario: transfer
+transfer_label: healthy           # the canonical class supplied to the target
+
+# Donor cohort that provides the codebook + the transferred signature + the real
+# transfer-class patients (direct_transfer arm).
+source:
+  name: beluga
+  splits_csv: datasets/beluga_splits.csv
+  file_extension: h5
+  aliases: {"No malignancy": healthy}
+
+# Target cohort that is missing the transfer class.
+data:
+  name: aml_hehr
+  splits_csv: datasets/aml_hehr_splits.csv
+  file_extension: h5
+  aliases: {"SCD": healthy}        # AML_Hehr's stem-cell-donor control = healthy
+
+clustering:
+  n_clusters: 50
+  algorithm: gaussian_mixture
+  covariance_type: diag
+  init_params: kmeans
+  random_state: 42
+
+generator:
+  n_artificial: 50
+  seed: 42
+
+protocol:
+  seed: 42
+  n_folds: 5
+  k_value: 50
+  baseline_per_fold_cv: false       # leak-free: reuse the fold-0 diseased train base
+
+train:
+  architectures: [Transformer, ABMIL, Mean]
+  lr: 5.0e-5
+  epochs: 150
+  seed: 38
+  folds: [0, 1, 2, 3, 4]
